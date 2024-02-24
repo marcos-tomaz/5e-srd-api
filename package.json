@@ -2,7 +2,7 @@
   "name": "dnd-5e-srd-api",
   "version": "0.0.0",
   "engines": {
-    "node": "18.x"
+    "node": "18"
   },
   "type": "module",
   "private": true,
@@ -10,7 +10,7 @@
     "build:ts": "tsc",
     "build": "npm-run-all clean bundle-swagger build:ts copy-assets",
     "clean": "rimraf dist/*",
-    "copy-assets": "ts-node tools/copyAssets.ts",
+    "copy-assets": "node --loader ts-node/esm tools/copyAssets.ts",
     "start": "npm run build && node dist/src/start.js",
     "dev": "nodemon npm run start",
     "lint": "eslint . --ext .js",
@@ -34,6 +34,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.3",
     "debug": "^4.3.1",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.8",
     "escape-string-regexp": "^2.0.0",
     "express": "^4.17.1",
@@ -46,7 +47,8 @@
     "morgan": "^1.10.0",
     "node-fetch": "^3.1.1",
     "redis": "^4.2.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {
     "@semantic-release/github": "^8.0.2",

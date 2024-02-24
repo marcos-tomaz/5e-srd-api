@@ -1,6 +1,11 @@
 import { createClient } from 'redis';
-import { redisUrl } from './environmentVariables.js';
+import { redisUrl, redisPort, redisPassword, redisUsername } from './environmentVariables.js';
 
 export default createClient({
-  url: redisUrl,
+  password: redisPassword,
+  username: redisUsername,
+  socket: {
+    host: redisUrl,
+    port: redisPort,
+  },
 });
